@@ -1,9 +1,8 @@
 # Active propulsion noise shaping for multi-rotor aircraft localization
 
 
-> Tamir Shor*, Gabriele Serussi*, Tom Hirshberg, Chaim Baskin, Alex Bronstein  
-> Technion Institute of Technology 
-> \* Denotes equal contribution  
+## Tamir Shor*, Gabriele Serussi*, Tom Hirshberg, Chaim Baskin, Alex Bronstein  - Technion Institute of Technology 
+\* Denotes equal contribution  
 >
 > Multi-rotor aerial autonomous vehicles (MAVs)
 primarily rely on vision for navigation purposes. However,
