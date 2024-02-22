@@ -23,10 +23,11 @@ The proposed methods are evaluated using a computationally
 affordable simulation of MAV rotor noise in 2D acoustic
 environments that is fitted to real recordings of rotor pressure
 fields.
+<br>
 <img src="images/IMG-20240220-WA0004.jpg" width="400px"/>
 <img src="images/IMG-20240215-WA0025.jpg" width="400px"/> 
-<a href="[https://youtu.be/9EWs2IX4cus](https://youtu.be/RT3aGX-p-C0)"></a> 
-
+<a href="[https://youtu.be/9EWs2IX4cus](https://youtu.be/RT3aGX-p-C0)"><img src="https://img.shields.io/static/v1?label=5-Minute&message=Video&color=darkgreen" height=20.5></a> 
+<br>
 <p align="center">
 <img src="images/fwd_model.pdf" width="400px"/>  
 </p>
@@ -75,7 +76,7 @@ outputs/
 ### Forward Model
 
 <p align="center">
-<img src="image/forward_model.png" width="400px"/>  
+<img src="images/forward_model.png" width="400px"/>  
 <br>
 Forward Process Layout
 </p>
