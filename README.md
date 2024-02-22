@@ -24,13 +24,16 @@ affordable simulation of MAV rotor noise in 2D acoustic
 environments that is fitted to real recordings of rotor pressure
 fields.
 <br>
-<img src="images/IMG-20240220-WA0004.jpg" width="400px"/>
-<img src="images/IMG-20240215-WA0025.jpg" width="400px"/> 
-![Video](images/VID-20240218-WA0003.mp4)
-<br>
 <p align="center">
-<img src="images/fwd_model.pdf" width="400px"/>  
+<img src="images/fwd-model-1.png" width="600px"/>  
 </p>
+</br>
+<img src="images/IMG-20240220-WA0004.jpg" width="400px"/>
+<img src="images/IMG-20240215-WA0025.jpg" width="200px"/> 
+[![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)](https://www.youtube.com/watch?v=RT3aGX-p-C0)
+<br>
+
+
 
 ## Description  
 Official implementation of our Propulsion Noise-based localization algorithm.
