@@ -26,7 +26,7 @@ fields.
 <br>
 <img src="images/IMG-20240220-WA0004.jpg" width="400px"/>
 <img src="images/IMG-20240215-WA0025.jpg" width="400px"/> 
-<a href="[https://youtu.be/9EWs2IX4cus](https://youtu.be/RT3aGX-p-C0)"><img src="https://img.shields.io/static/v1?label=5-Minute&message=Video&color=darkgreen" height=20.5></a> 
+![Video](images/VID-20240218-WA0003.mp4)
 <br>
 <p align="center">
 <img src="images/fwd_model.pdf" width="400px"/>  
