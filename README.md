@@ -37,7 +37,6 @@ Pressure Field Simulation:
   
 [![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)](https://www.youtube.com/watch?v=RT3aGX-p-C0)
 
-[![Video](https://raw.githubusercontent.com/tamirshor7/EARS_code/main/images/VID-20240218-WA0003.mp4)](https://raw.githubusercontent.com/tamirshor7/EARS_code/main/images/VID-20240218-WA0003.mp4)
 
 
 ## Description  
