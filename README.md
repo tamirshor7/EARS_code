@@ -1,7 +1,7 @@
 # Active propulsion noise shaping for multi-rotor aircraft localization
 
 
-## Tamir Shor*, Gabriele Serussi*, Tom Hirshberg, Chaim Baskin, Alex Bronstein  -  <img src="images/vista_logo.png" width="50px" align="right"/>
+## Gabriele Serussi*, Tamir Shor*, Tom Hirshberg, Chaim Baskin, Alex Bronstein  -  <img src="images/vista_logo.png" width="50px" align="right"/>
 ### Technion Institute of Technology <img src="images/technion_logo.png" width="50px" align="right"/>
 \* Denotes equal contribution  
 >
