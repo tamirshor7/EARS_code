@@ -30,9 +30,14 @@ fields.
 </br>
 <img src="images/IMG-20240220-WA0004.jpg" width="400px"/>
 <img src="images/IMG-20240215-WA0025.jpg" width="200px"/> 
-[![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)](https://www.youtube.com/watch?v=RT3aGX-p-C0)
-<br>
 
+</br>
+
+Pressure Field Simulation:
+  
+[![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)](https://www.youtube.com/watch?v=RT3aGX-p-C0)
+
+[![Video](https://raw.githubusercontent.com/tamirshor7/EARS_code/main/images/VID-20240218-WA0003.mp4)](https://raw.githubusercontent.com/tamirshor7/EARS_code/main/images/VID-20240218-WA0003.mp4)
 
 
 ## Description  
