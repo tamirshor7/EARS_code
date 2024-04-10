@@ -103,12 +103,11 @@ and Alon Gil-Ad for their help with the data acquisition.
 ## Citation
 If you use this code for your research, please cite the following work: 
 ```
-@misc{chefer2023attendandexcite,
-      title={Active propulsion noise shaping for multi-rotor aircraft localization}, 
-      author={Tamir Shor and Gabriele Serussi and Tom Hirshberg and Chaim Baskin and Alex Bronstein},
-      year={2024},
-      eprint={?},
-      archivePrefix={?},
-      primaryClass={?}
+@misc{@article{gabriele2024active,
+  title={Active propulsion noise shaping for multi-rotor aircraft localization},
+  author={Gabriele, Serussi and Tamir, Shor and Tom, Hirshberg and Chaim, Baskin and Alex, Bronstein},
+  journal={arXiv preprint arXiv:2402.17289},
+  year={2024}
+}
 }
 ```
