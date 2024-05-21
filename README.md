@@ -35,7 +35,7 @@ fields.
 
 Pressure Field Simulation:
   
-[![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)](https://www.youtube.com/watch?v=RT3aGX-p-C0)
+[![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)]([https://www.youtube.com/watch?v=RT3aGX-p-C0](https://youtu.be/pRnapzl87M8))
 
 
 
