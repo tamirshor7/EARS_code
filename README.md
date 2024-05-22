@@ -24,7 +24,9 @@ affordable simulation of MAV rotor noise in 2D acoustic
 environments that is fitted to real recordings of rotor pressure
 fields.
 <br>
+
 ### Method Overview
+
 <p align="center">
 <img src="images/fwd-model-1.png" width="600px"/>  
 </p>
@@ -128,32 +130,12 @@ Repository layout:
 ├── scripts
 │   ├── acoustic_reflection_coefficient_dataset_generation.sh
 │   ├── aspect_ratio_dataset_generation.sh
-│   ├── newton_cluster_point_cpu.sh
-│   ├── newton_cluster_point_gpu.sh
-│   ├── rir_shear_shard.sh
 │   ├── shear_dataset_generation.sh
-│   ├── shifted_room_cpu.sh
-│   ├── shifted_room_gpu.sh
-│   ├── shifted_room_newton_cpu.sh
-│   ├── shifted_room_newton_gpu.sh
-│   ├── shifted_room_newton_gpu_wrapper.sh
-│   ├── small_dense_room.sh
-│   ├── small_dense_room_gpu.sh
-│   ├── train_dataset_generation_cpu.sh
-│   ├── train_dataset_generation_cpu_newton.sh
-│   ├── train_dataset_generation_gpu.sh
-│   ├── train_dataset_generation_gpu_newton.sh
-│   ├── train_dataset_generation_gpu_newton_wrapper.sh
-│   ├── train_dataset_generation_gpu_shear.sh
-│   ├── train_model.sh
 │   └── uniform_scale_dataset_generation.sh
 └── simulator
-    ├── dataset_generation
-    │   └── generate_dataset.py
-    └── temporary_scripts
-        ├── elaborate.py
-        ├── elaborate_modulate_phase.py
-        └── scripts.sh
+    ├── elaborate.py
+    ├── elaborate_modulate_phase.py
+    └── scripts.sh
 ```
 
 ### Data
