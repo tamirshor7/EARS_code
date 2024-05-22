@@ -28,18 +28,19 @@ fields.
 <p align="center">
 <img src="images/fwd-model-1.png" width="600px"/>  
 </p>
-</br>
+<br>
+
 ### Tested Phase Modulation
 <img src="images/IMG-20240220-WA0004.jpg" width="400px"/>
 
 ### Error spatial distribution
 <img src="images/IMG-20240215-WA0025.jpg" width="200px"/> 
 
-</br>
+<br>
 
 ### Pressure Field Simulation Video:
   
-[![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)]([https://www.youtube.com/watch?v=RT3aGX-p-C0](https://youtu.be/pRnapzl87M8))
+[![Click to play](https://img.youtube.com/vi/pRnapzl87M8/maxresdefault.jpg)]([https://www.youtube.com/watch?v=RT3aGX-p-C0](https://youtu.be/pRnapzl87M8))
 
 
 
@@ -53,14 +54,12 @@ To set up our environment, please run:
 
 ```
 pip install -r requirements.txt
-
-or
-
+```
+or  
+```
 conda install --file requirements.txt
 
 ```
-
-
 
 ## Usage
 
