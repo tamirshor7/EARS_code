@@ -396,7 +396,8 @@ def simulate_signals_with_rir(args):
     num_mics = args['num_phases_mics']
     num_rotors = args['num_rotors']
     
-    dir_save_path = args['save_data_dir_path']
+    dir_save_path = define_save_dir(args, args['delta'], number_of_angles=args['number_of_angles'])
+    dir_save_path = os.path.join(dir_save_path, '..')
 
     if not os.path.exists(dir_save_path):
         os.makedirs(dir_save_path)

@@ -92,7 +92,7 @@ Forward Process Layout
 
 In order to fit the parameters of the forward model run:
 ```
-python forward_model/forward_model.py -gpu <GPU> -exp_name <NAME OF THE EXPERIMENT>
+python forward_model/forward_model.py -gpu <GPU> -exp_name <NAME OF THE EXPERIMENT> -optimize
 ```
 Where:
 - ```<GPU>``` represents which GPU to use
@@ -115,6 +115,60 @@ Where:
 - ```<WALL 2 LENGTH>``` is the length of the second wall in meters (assuming a rectangular room)
 - ```<NUMBER OF ANGLES PER POINT>``` is the number of angles to use per point in the room (e.g. 64)
 
+#### Forward Model - Generate the robustness test datasets
+In order to reproduce the datasets used for the robustness tests, first fit the parameters of the forward model (see [Parameter fitting](#forward model - parameter fitting)) and then run the commands listed in the next sections.
+
+##### Robustness test: uniform scale
+To generate the dataset for the robustness test of the uniform scale:
+1. Generate the set of RIRs (Room Impulse Responses) for the different scales:
+```
+scripts/uniform_scale_dataset_generation.sh cpu
+```
+2. Given the set of RIRs, generate the set of sounds :
+```
+scripts/uniform_scale_dataset_generation.sh gpu <NUMBER OF GPUS>
+```
+Where:
+- ```<NUMBER OF GPUS>``` is the number of GPUs to use
+
+##### Robustness test: aspect ratio
+To generate the dataset for the robustness test of the aspect ratio:
+1. Generate the set of RIRs (Room Impulse Responses) for the different aspect ratios:
+```
+scripts/aspect_ratio_dataset_generation.sh cpu
+```
+2. Given the set of RIRs, generate the set of sounds :
+```
+scripts/aspect_ratio_dataset_generation.sh gpu <NUMBER OF GPUS>
+```
+Where:
+- ```<NUMBER OF GPUS>``` is the number of GPUs to use
+
+##### Robustness test: shear
+To generate the dataset for the robustness test of the shear:
+1. Generate the set of RIRs (Room Impulse Responses) for the different shears:
+```
+scripts/shear_dataset_generation.sh cpu
+```
+2. Given the set of RIRs, generate the set of sounds :
+```
+scripts/shear_dataset_generation.sh gpu <NUMBER OF GPUS>
+```
+Where:
+- ```<NUMBER OF GPUS>``` is the number of GPUs to use
+
+##### Robustness test: acoustic reflection coefficient
+To generate the dataset for the robustness test of the acoustic reflection coefficient:
+1. Generate the set of RIRs (Room Impulse Responses) for the different reflection coefficients:
+```
+scripts/acoustic_reflection_coefficient_dataset_generation.sh cpu
+```
+2. Given the set of RIRs, generate the set of sounds :
+```
+scripts/acoustic_reflection_coefficient_dataset_generation.sh gpu <NUMBER OF GPUS>
+```
+Where:
+- ```<NUMBER OF GPUS>``` is the number of GPUs to use
 
 ### Inverse Model
 * Explain how to train inverse model for all experiments
