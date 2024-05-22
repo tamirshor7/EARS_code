@@ -5,11 +5,6 @@ import torch
 
 def snr_db_to_variance(snr_db, signal_power):
     # signal_power is the norm of the signal
-
-    #return signal_power * 10 ** (-snr_db / 10)
-    # return signal_power / (10 ** (snr_db / 20))
-
-    # return signal_power / (torch.pow(torch.tensor(10), snr_db / 20))
     return signal_power / (np.power(10, snr_db / 10))
 
 class System(torch.nn.Module):
@@ -36,7 +31,7 @@ class System(torch.nn.Module):
         with torch.no_grad():
             orig_signal.copy_(torch.tensor(response))
             
-        return orig_signal#response
+        return orig_signal
     def backward(self,grad_output):
         return grad_output
 

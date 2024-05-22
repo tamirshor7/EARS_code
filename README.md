@@ -24,16 +24,20 @@ affordable simulation of MAV rotor noise in 2D acoustic
 environments that is fitted to real recordings of rotor pressure
 fields.
 <br>
+### Method Overview
 <p align="center">
 <img src="images/fwd-model-1.png" width="600px"/>  
 </p>
 </br>
+### Tested Phase Modulation
 <img src="images/IMG-20240220-WA0004.jpg" width="400px"/>
+
+### Error spatial distribution
 <img src="images/IMG-20240215-WA0025.jpg" width="200px"/> 
 
 </br>
 
-Pressure Field Simulation:
+### Pressure Field Simulation Video:
   
 [![Click to play](https://img.youtube.com/vi/RT3aGX-p-C0/0.jpg)]([https://www.youtube.com/watch?v=RT3aGX-p-C0](https://youtu.be/pRnapzl87M8))
 
@@ -61,24 +65,141 @@ conda install --file requirements.txt
 ## Usage
 
 ### Repo Layout 
-Explain repo layout e.g. 
+Repository layout:
 ```
-outputs/
-|-- folder1/
-|   |-- smth.py 
-|   |-- othersmth.py
-|   |-- ...
-|   |-- lastsmth.py
-|-- folder_2/
-|   |-- smth.py 
-|   |-- othersmth.py
-|   |-- ...
-|   |-- lastsmth.py
-...
+.
+├── LICENSE
+├── README.md
+├── _config.yml
+├── controller
+│   └── controller.py
+├── data_processing
+│   ├── create_signals_manually.py
+│   └── pre_processing.py
+├── forward_model
+│   ├── RealRecordings.py
+│   ├── forward_indoor_wrapper.py
+│   ├── forward_model.py
+│   ├── forward_model_wrapper.py
+│   ├── jax_scipy_minimize_forward.py
+│   ├── load_tfevent.py
+│   ├── non_convex_room.py
+│   ├── optimized_data
+│   └── real_recordings
+├── images
+│   ├── IMG-20240215-WA0025.jpg
+│   ├── IMG-20240220-WA0004.jpg
+│   ├── VID-20240218-WA0003.mp4
+│   ├── forward_model.png
+│   ├── fwd-model-1.png
+│   ├── technion_logo.png
+│   └── vista_logo.png
+├── io
+│   ├── fast_io.py
+│   └── hdf5.py
+├── localization
+│   ├── evaluate.py
+│   ├── multi_position
+│   │   ├── aggregator.py
+│   │   ├── constant_speed.py
+│   │   ├── dataset.py
+│   │   ├── master.py
+│   │   └── trajectory_factory.py
+│   ├── penalty.py
+│   ├── phase_modulation
+│   │   ├── generate_all_instances_dataset.py
+│   │   ├── input_sound_parameters.npz
+│   │   ├── modulation_dataset.py
+│   │   ├── phase_modulation_injector.py
+│   │   ├── phase_modulation_pipeline.py
+│   │   ├── phase_modulator.py
+│   │   ├── rir.py
+│   │   └── rir_convolution.py
+│   ├── physics.py
+│   ├── preprocess.py
+│   ├── python_projection
+│   │   ├── Constraints.py
+│   │   ├── Evaluator.py
+│   │   ├── Projector.py
+│   │   ├── __init__.py
+│   │   ├── closed_form_projection.py
+│   │   ├── drs.py
+│   │   ├── projector_changed.py
+│   │   ├── requirements.txt
+│   │   ├── run_projection.py
+│   │   └── utils.py
+│   ├── train_pipeline.py
+│   ├── train_separate.py
+│   └── transformer_encoder.py
+├── phase_modulation_bank
+│   ├── learned
+│   │   └── learned.npy
+│   ├── no_learn_antiphase_time_domain
+│   │   └── anti-phase.npy
+│   ├── no_learn_constant
+│   │   └── constant.npy
+│   ├── no_learn_grad_freq_sine
+│   │   └── gradual.npy
+│   ├── no_learn_max_freq_const
+│   │   └── max_freq.npy
+│   └── no_learn_sine
+│       └── sines.npy
+├── pyroomacoustics_differential
+│   ├── acoustic_methods.py
+│   ├── acoustic_methods_onp.py
+│   ├── consts.py
+│   ├── forward_model_2D_interface.py
+│   ├── geometry.py
+│   ├── geometry_onp.py
+│   ├── jax_forward_model_2D_interface.py
+│   ├── jax_geometry.py
+│   ├── plot_room.py
+│   └── room.py
+├── requirements.txt
+├── scripts
+│   ├── acoustic_reflection_coefficient_dataset_generation.sh
+│   ├── aspect_ratio_dataset_generation.sh
+│   ├── asymmetric_non_convex_room_cpu.sh
+│   ├── asymmetric_non_convex_room_gpu.sh
+│   ├── fast_train_dataset_generation_gpu_newton.sh
+│   ├── newton_cluster_point_cpu.sh
+│   ├── newton_cluster_point_gpu.sh
+│   ├── non_convex_room.sh
+│   ├── non_convex_room_gpu.sh
+│   ├── non_convex_room_gpu_newton.sh
+│   ├── non_convex_room_gpu_newton_wrapper.sh
+│   ├── non_convex_room_newton.sh
+│   ├── non_convex_room_shifted.sh
+│   ├── non_convex_room_shifted_gpu.sh
+│   ├── non_uniform_rir_corruption.sh
+│   ├── rir_shear_shard.sh
+│   ├── shear_dataset_generation.sh
+│   ├── shifted_room_cpu.sh
+│   ├── shifted_room_gpu.sh
+│   ├── shifted_room_newton_cpu.sh
+│   ├── shifted_room_newton_gpu.sh
+│   ├── shifted_room_newton_gpu_wrapper.sh
+│   ├── small_dense_room.sh
+│   ├── small_dense_room_gpu.sh
+│   ├── train_dataset_generation_cpu.sh
+│   ├── train_dataset_generation_cpu_newton.sh
+│   ├── train_dataset_generation_gpu.sh
+│   ├── train_dataset_generation_gpu_newton.sh
+│   ├── train_dataset_generation_gpu_newton_wrapper.sh
+│   ├── train_dataset_generation_gpu_shear.sh
+│   ├── train_model.sh
+│   └── uniform_scale_dataset_generation.sh
+└── simulator
+    ├── dataset_generation
+    │   └── generate_dataset.py
+    └── temporary_scripts
+        ├── elaborate.py
+        ├── elaborate_modulate_phase.py
+        └── scripts.sh
 ```
 
 ### Data
-* Link real recordings and explain how to create our simulation per experiment 
+Download the real recordings from [here](https://doi.org/10.7910/DVN/F0CVOQ) and place them in the folder `forward_model/real_recordings/`.
 
 ### Forward Model
 
@@ -101,11 +222,11 @@ Where:
 #### Forward Model - Synthesis of the dataset for the inverse model
 Once the parameters of the forward model have been fitted, you can synthesize a dataset for the inverse model where the pressure is captured by the microphones mounted on a circular array on the aircraft by running the following command:
 ```
-python forward_model/forward_indoor_wrapper.py -gpu <GPU> -exp_name <NAME OF THE EXPERIMENT> -max_order <MAX ORDER> -num_rotors 4 -num_phases_mics <NUMBER OF MICROPHONES> -saved_data_dir_path <DATA PATH> -e_absorption <WALLS' ABSORPTION COEFFICIENT> -num_points_per_side <NUMBER OF POINTS PER SIDE> -room_x <WALL 1 LENGTH> -room_y <WALL 2 LENGTH> -number_of_angles <NUMBER OF ANGLES PER POINT>
+python forward_model/forward_indoor_wrapper.py -gpu <GPU> -exp_name <NAME OF THE EXPERIMENT> -max_order <MAX ORDER> -num_rotors 4 -num_phases_mics <NUMBER OF MICROPHONES> -saved_data_dir_path <DATA PATH> -e_absorption <WALLS ABSORPTION COEFFICIENT> -num_points_per_side <NUMBER OF POINTS PER SIDE> -room_x <WALL 1 LENGTH> -room_y <WALL 2 LENGTH> -number_of_angles <NUMBER OF ANGLES PER POINT>
 ```
 Where:
 - ```<GPU>``` represents which GPU to use
-- ```<NAME OF THE EXPERIMENT>``` is the name assigned to the experiment during the [Parameter fitting](#forward model - parameter fitting) phase
+- ```<NAME OF THE EXPERIMENT>``` is the name assigned to the experiment during the [parameter fitting](#forward-model---parameter-fitting) phase
 - ```<MAX ORDER>``` is the maximum image order to use 
 - ```<NUMBER OF MICROPHONES>``` is the number of microphones to use (e.g. 8)
 - ```<DATA PATH>``` is the path to save the data
@@ -116,7 +237,7 @@ Where:
 - ```<NUMBER OF ANGLES PER POINT>``` is the number of angles to use per point in the room (e.g. 64)
 
 #### Forward Model - Generate the robustness test datasets
-In order to reproduce the datasets used for the robustness tests, first fit the parameters of the forward model (see [Parameter fitting](#forward model - parameter fitting)) and then run the commands listed in the next sections.
+In order to reproduce the datasets used for the robustness tests, first fit the parameters of the forward model (see [parameter fitting](#forward-model---parameter-fitting)) and then run the commands listed in the next sections.
 
 ##### Robustness test: uniform scale
 To generate the dataset for the robustness test of the uniform scale:

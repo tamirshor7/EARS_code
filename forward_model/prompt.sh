@@ -1,1 +1,0 @@
-python EARS/forward_model/forward_model.py -gpu 0 -exp_name Nov25_08-28-20_aida_2_rads_80mics_128sources_051 -opt_harmonies 0.5 1 2 3 -opt_harmonies_init_vals 0 0 0 0 -opt_phi_0_init_vals 0 0 0 0 -num_sources_power 7 -channel 0 -duration 0.5 -num_phases_mics 8 -num_rotors 4 -e_absorption 0.2 -mics_rads 0.53 -room_x 1000 -room_y 1000 -org_x 1 -org_y 1 -max_order 1

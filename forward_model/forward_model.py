@@ -247,14 +247,10 @@ def build_room_and_read_gt_data(args):
     '''
     exp_name = args['exp_name']
     print(f'Reading experimental dataset from 13.09.2021')
-    # QUESTION: what is "radiuses"?
+
     radiuses = [str(x) for x in sorted(list(range(70,125,10)) + [75, 85])]
     data_dir_names = ['13_9_'+str(x) for x in radiuses]
-    if args['use_newton_cluster']:
-        data_dir_paths = [os.path.join('/','home','gabrieles','ears','code','data','real_recordings', x) for x in data_dir_names]
-    else:
-        storage_location = 'walkure_public'#'walkure_public' #'walkure_pub' # 
-        data_dir_paths = [os.path.join("/mnt",storage_location,'tamirs','real_recordings', 'real_recordings',  x) for x in data_dir_names]
+    data_dir_paths = [os.path.join('real_recordings', x) for x in data_dir_names]
 
     recordings_dataset = RealRecordingsSeveralExperiments(data_dir_paths, 
                                                     channel=args['channel'],

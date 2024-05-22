@@ -6,26 +6,21 @@ import pathlib
 import random
 import shutil
 import time
-import pandas
 import argparse
 import numpy as np
 import torch
-import torchvision
 from matplotlib import pyplot as plt
 
 import sys
 #sys.path.append("/home/tamir.shor/EARS")
 from EARS.localization.phase_modulation.phase_modulation_pipeline import Localization_Model
-from EARS.localization.dataset_utils import AudioLocalizationDataset
-from EARS.localization.phase_modulation.modulation_dataset import ModulationDatasetFixedInputSound, \
+from EARS.localization.phase_modulation.modulation_dataset import  \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient2d, collate_fn, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient2dOrientation, \
     Localization2dGivenOrientationDataset, collate_fn_orientation
-from torch.utils.data import DataLoader, Subset, RandomSampler
-from tqdm.auto import tqdm
-from torch.optim import Adam
-from torch.optim.lr_scheduler import ReduceLROnPlateau
+from torch.utils.data import DataLoader, RandomSampler
+
 import torch
 import os
 from EARS.localization.physics import Physics, SAMPLES_PER_ROTATION, PLOT_DT #get_integrated_velocity
@@ -36,7 +31,6 @@ from math import sqrt
 import h5py
 
 # Initialize logging
-from datetime import datetime
 from EARS.localization.multi_position import master, aggregator, trajectory_factory
 import EARS.localization.multi_position.dataset as multi_position_dataset
 

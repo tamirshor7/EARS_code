@@ -15,7 +15,6 @@ from matplotlib import pyplot as plt
 import sys
 sys.path.append("/home/tamir.shor/EARS")
 from EARS.localization.phase_modulation.phase_modulation_pipeline import Localization_Model
-from EARS.localization.dataset_utils import AudioLocalizationDataset
 from EARS.localization.phase_modulation.modulation_dataset import ModulationDatasetFixedInputSound, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient2d, collate_fn, \
