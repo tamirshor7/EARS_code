@@ -50,8 +50,8 @@ def add_args(parser, args=None):
     parser.add_argument('-mics_around_rotor_num', default=0, type=int)
     # Gabriele: use this command to apply a constant phase modulation
     parser.add_argument('-phase_shift', default=[0, 0, 0, 0], nargs='+', type=float) # degree - phase shift for the second rad
-    parser.add_argument('-flip_rotation_direction', default=[0,0,0,0], nargs='+', type=int) # rotation direction for each simulated rotor
-    parser.add_argument('-modulate_phase', default=None, nargs='+', type=int)
+    parser.add_argument('-flip_rotation_direction', default=[1,0,0,1], nargs='+', type=int) # rotation direction for each simulated rotor
+    parser.add_argument('-modulate_phase', default=0, nargs='+', type=int)
 
     # simulated sined or real recordings - choose
     # rotor/ sources args
@@ -59,17 +59,17 @@ def add_args(parser, args=None):
     parser.add_argument('-recordings_mode', default='CCW', type=str)
     parser.add_argument('-num_sources_power', default=7, type=int)
     # emitted signals args
-    parser.add_argument('-channel', default=-1, type=int)
+    parser.add_argument('-channel', default=0, type=int)
     parser.add_argument('-vel_rate', default=5, type=int)
-    parser.add_argument('-duration', default=0.6, type=float)
+    parser.add_argument('-duration', default=0.5, type=float)
     parser.add_argument('-low_cut_coeff', default= -1, type=float)
     parser.add_argument('-high_cut_coeff', default= 3.25, type=float)
     parser.add_argument('-filter_order', default=1, type=int)
     # emitted signals OPTIMIZED params args
-    parser.add_argument('-num_phases_mics', default=4, type=int)
-    parser.add_argument('-opt_harmonies', default=[], nargs='+', type=float)
-    parser.add_argument('-opt_harmonies_init_vals', default=[], nargs='+', type=float)
-    parser.add_argument('-opt_phi_0_init_vals', default=[], nargs='+', type=float)
+    parser.add_argument('-num_phases_mics', default=80, type=int)
+    parser.add_argument('-opt_harmonies', default=[0.5, 1., 2., 3.], nargs='+', type=float)
+    parser.add_argument('-opt_harmonies_init_vals', default=[0., 0., 0., 0.], nargs='+', type=float)
+    parser.add_argument('-opt_phi_0_init_vals', default=[0., 0., 0., 0.], nargs='+', type=float)
     parser.add_argument('-given_radiuses', default=[-1], nargs='+', type=float)
     # room args
     parser.add_argument('-room_x', default=5., type=float)
@@ -82,7 +82,7 @@ def add_args(parser, args=None):
 
     # optimization args
     parser.add_argument('-opt_method', default='L-BFGS-B', type=str)
-    parser.add_argument('-step_log_signals', default=2, type=int)
+    parser.add_argument('-step_log_signals', default=1, type=int)
 
     # NEW: support rir only
     parser.add_argument('-rir_only', action='store_true')
