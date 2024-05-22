@@ -107,43 +107,15 @@ Repository layout:
 │   │   └── trajectory_factory.py
 │   ├── penalty.py
 │   ├── phase_modulation
-│   │   ├── generate_all_instances_dataset.py
 │   │   ├── input_sound_parameters.npz
 │   │   ├── modulation_dataset.py
 │   │   ├── phase_modulation_injector.py
-│   │   ├── phase_modulation_pipeline.py
-│   │   ├── phase_modulator.py
-│   │   ├── rir.py
-│   │   └── rir_convolution.py
+│   │   └── phase_modulation_pipeline.py
 │   ├── physics.py
 │   ├── preprocess.py
-│   ├── python_projection
-│   │   ├── Constraints.py
-│   │   ├── Evaluator.py
-│   │   ├── Projector.py
-│   │   ├── __init__.py
-│   │   ├── closed_form_projection.py
-│   │   ├── drs.py
-│   │   ├── projector_changed.py
-│   │   ├── requirements.txt
-│   │   ├── run_projection.py
-│   │   └── utils.py
 │   ├── train_pipeline.py
 │   ├── train_separate.py
 │   └── transformer_encoder.py
-├── phase_modulation_bank
-│   ├── learned
-│   │   └── learned.npy
-│   ├── no_learn_antiphase_time_domain
-│   │   └── anti-phase.npy
-│   ├── no_learn_constant
-│   │   └── constant.npy
-│   ├── no_learn_grad_freq_sine
-│   │   └── gradual.npy
-│   ├── no_learn_max_freq_const
-│   │   └── max_freq.npy
-│   └── no_learn_sine
-│       └── sines.npy
 ├── pyroomacoustics_differential
 │   ├── acoustic_methods.py
 │   ├── acoustic_methods_onp.py
@@ -151,27 +123,14 @@ Repository layout:
 │   ├── forward_model_2D_interface.py
 │   ├── geometry.py
 │   ├── geometry_onp.py
-│   ├── jax_forward_model_2D_interface.py
-│   ├── jax_geometry.py
 │   ├── plot_room.py
 │   └── room.py
 ├── requirements.txt
 ├── scripts
 │   ├── acoustic_reflection_coefficient_dataset_generation.sh
 │   ├── aspect_ratio_dataset_generation.sh
-│   ├── asymmetric_non_convex_room_cpu.sh
-│   ├── asymmetric_non_convex_room_gpu.sh
-│   ├── fast_train_dataset_generation_gpu_newton.sh
 │   ├── newton_cluster_point_cpu.sh
 │   ├── newton_cluster_point_gpu.sh
-│   ├── non_convex_room.sh
-│   ├── non_convex_room_gpu.sh
-│   ├── non_convex_room_gpu_newton.sh
-│   ├── non_convex_room_gpu_newton_wrapper.sh
-│   ├── non_convex_room_newton.sh
-│   ├── non_convex_room_shifted.sh
-│   ├── non_convex_room_shifted_gpu.sh
-│   ├── non_uniform_rir_corruption.sh
 │   ├── rir_shear_shard.sh
 │   ├── shear_dataset_generation.sh
 │   ├── shifted_room_cpu.sh

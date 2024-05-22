@@ -11,7 +11,7 @@ from itertools import product
 #import h5py
 from multiprocessing import Pool
 from forward_model import add_args, build_room_and_read_gt_data, read_optimized_params_onp, forward_func
-from pyroomacoustics_differential import forward_model_2D_interface, jax_forward_model_2D_interface
+from pyroomacoustics_differential import forward_model_2D_interface
 
 from EARS.io import hdf5, fast_io
 from re import compile, search
