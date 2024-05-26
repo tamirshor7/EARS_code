@@ -5,7 +5,7 @@ generate_rirs() {
     echo "Running function with param1=$param1"
     
 
-    python EARS/forward_model/forward_indoor_wrapper.py -max_order 1 \
+    python EARS_code/forward_model/forward_indoor_wrapper.py -max_order 1 \
      -exp_name Sep19_10-23-51_aida_new_rads_80mics_128sources_051 \
     -second_rad 0.51 -opt_harmonies 0.5 1 2 3 -opt_harmonies_init_vals 0 0 0 0 \
      -opt_phi_0_init_vals 0 0 0 0 -num_sources_power 7 -duration 0.5 -channel 0 \
@@ -25,7 +25,7 @@ compute_sound() {
 
     echo "Computing sound with shear angle $shear_angle on gpu $which_gpu"
 
-    python EARS/forward_model/forward_indoor_wrapper.py -max_order 1 \
+    python EARS_code/forward_model/forward_indoor_wrapper.py -max_order 1 \
         -exp_name alt_Dec20_13-33-20_plato1_final_rads_80mics_128sources_051 \
         -second_rad 0.51 -opt_harmonies 0.5 1 2 3 -opt_harmonies_init_vals 0 0 0 0 \
       -opt_phi_0_init_vals 0 0 0 0 -num_sources_power 7 -duration 0.5 -channel 0 \

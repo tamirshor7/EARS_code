@@ -345,7 +345,7 @@ class Localization2dGivenOrientationDataset(Dataset):
                  return_absorption_coefficient:bool=False,
                  duration=None,
                  return_deformation:bool = False,
-                 deformation = None, shear_angle = None, filter_angles:bool=False,
+                 deformation = None, shear_angle = None, 
                  use_newton_cluster:bool = False,
                  skip_bad_files:bool=False) -> None:
         assert deformation is not None or not return_deformation, "You need to specify the deformation"
@@ -356,65 +356,9 @@ class Localization2dGivenOrientationDataset(Dataset):
             raise ValueError(f"The path to the data {self.data_path} does not exist.")
         
         self.use_newton_cluster = use_newton_cluster
-        if self.use_newton_cluster:
-            self.extension = ".hdf5"
-            user_name = getpass.getuser()
-            try:
-                summary_file_path_root = data_path.replace("gabrieles", user_name)
-                summary_file_path_first_partition = os.path.join(summary_file_path_root, "first_partition")
-                # self.first_partition = set(filter(lambda x: x.endswith(".hdf5"), os.listdir(data_path)))
-                first_partition = list(filter(lambda x: x.endswith(".hdf5"), fast_io.get_listed_files(data_path, summary_file_path=summary_file_path_first_partition)))
-            except:
-                first_partition = []
-            
-            try:
-                summary_file_path_second_partition = os.path.join(summary_file_path_root, "second_partition")
-                # second_partition = set(filter(lambda x: x.endswith(".hdf5"), os.listdir(data_path.replace("gabrieles", "tamir.shor",1))))
-                second_partition = list(filter(lambda x: x.endswith(".hdf5"), fast_io.get_listed_files(data_path.replace("gabrieles", "tamir.shor",1), summary_file_path=summary_file_path_second_partition)))
-            except:
-                second_partition = []
-            self.separator = len(first_partition)
-            first_partition.extend(second_partition)
-            self.single_data_path = first_partition
 
-
-            # #print(f"[debug] data path {data_path} second data path {data_path.replace('gabrieles', 'tamir.shor',1)}")
-            # # first_partition = list(filter(lambda x: x.endswith(".hdf5"), os.listdir(data_path)))
-            # first_partition = list(filter(lambda x: x.endswith(".hdf5"), fast_io.get_listed_files(data_path)))
-            # # second_partition = list(filter(lambda x: x.endswith(".hdf5"), os.listdir(data_path.replace("gabrieles", "tamir.shor",1))))
-            # second_partition = list(filter(lambda x: x.endswith(".hdf5"), fast_io.get_listed_files(data_path.replace("gabrieles", "tamir.shor",1))))
-            # self.separator = len(first_partition)
-            # #print(f"[debug] first_partition {first_partition} second partition {second_partition}")
-            # first_partition.extend(second_partition)
-            # self.single_data_path = first_partition
-            # #print(f"[debug] single data path contains {self.single_data_path}")
-        elif not filter_angles: 
-        # create a list of all the files in the folder
-            hdf5_datasets = set(["/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/orig_64_angles/default_5.0_5.0_order_1_0.5_d_0.05/",
-                                 "/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/non_convex_room/non_convex_5.0_5.0_order_1_0.5_d_0.05/",
-                                 "/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/small_dense_room/default_5.0_5.0_order_1_0.5_d_0.05/",
-                                 "/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/shifted_room/default_5.0_5.0_order_1_0.5_d_0.05/",
-                                 "/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/non_convex_room/shifted_non_convex_5.0_5.0_order_1_0.5_d_0.05/",
-                                 "/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/asymmetric_non_convex_room/non_convex_5.0_5.0_order_1_0.5_d_0.05"
-                                 ])
-            hdf5_prefix = (r"/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/absorption_coefficient/e_",
-                           r"/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/aspect_ratio",
-                           r"/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/shear",
-                           r"/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/new_shear",
-                           r"/mnt/walkure_public/tamirs/pressure_field_orientation_dataset/uniform")
-            self.extension = ".hdf5" if (self.data_path in hdf5_datasets or self.data_path.startswith(hdf5_prefix)) else ".npy"
-            # self.single_data_path = list(filter(lambda x: x.endswith(self.extension), os.listdir(self.data_path)))
-            self.single_data_path = list(filter(lambda x: x.endswith(self.extension), fast_io.get_listed_files(self.data_path)))
-            #print(f"Working on {len(self.single_data_path)} files")
+        self.single_data_path = list(filter(lambda x: x.endswith(".hdf5"), fast_io.get_listed_files(data_path)))
         
-        #date_filter = get_filter(self.data_path)
-        #self.single_data_path = list(filter(date_filter, os.listdir(self.data_path)))
-
-        else:
-            angle_filter = balance_dataset_filter(self.data_path)
-            # self.single_data_path = list(filter(angle_filter, os.listdir(self.data_path)))
-            self.single_data_path = list(filter(angle_filter, fast_io.get_listed_files(self.data_path)))
-
 
         input_sound_parameters = np.load(os.path.join(os.path.dirname(__file__), "..", "..", "dataset", "input_sound_bank", "input_sound_parameters.npz"))
         if duration is not None:
@@ -434,7 +378,6 @@ class Localization2dGivenOrientationDataset(Dataset):
         return len(self.single_data_path)
     
     def get_coordinates(self, data_file:str) -> tuple:
-        # print(f"processing {data_file}")
         coordinates = ([float(x.removesuffix(self.extension))/10**8 for x in data_file.split("_")[:-1]])
         orientation = float(data_file.removesuffix(self.extension).split("_")[-1])/10**8
 
@@ -448,9 +391,6 @@ class Localization2dGivenOrientationDataset(Dataset):
         # check validity of the coordinates
         if len(coordinates) != 2:
             raise ValueError(f"The coordinates are not valid. Got coordinates: {coordinates}")
-        # assert (all(x>=0 for x in coordinates) or all(abs(x)<1e-4 for x in coordinates)) \
-        #         and (all(x<=1 for x in coordinates) or all((x-1)<=1e-4 for x in coordinates)),\
-        #     f"in file {data_file} got coordinates {coordinates} in data_path {self.data_path} min {self.min_coord} max {self.max_coord}"
         assert (all(x>=0 or abs(x)<1e-2 for x in coordinates)) \
                 and (all(x<=1 or (x-1)<=1e-2 for x in coordinates)),\
             f"in file {data_file} got coordinates {coordinates} in data_path {self.data_path} min {self.min_coord} max {self.max_coord}"

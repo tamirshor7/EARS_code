@@ -13,7 +13,7 @@ import torch
 import torchvision
 from matplotlib import pyplot as plt
 import sys
-sys.path.append("/home/tamir.shor/EARS")
+#sys.path.append("/home/tamir.shor/EARS")
 from EARS.localization.phase_modulation.phase_modulation_pipeline import Localization_Model
 from EARS.localization.phase_modulation.modulation_dataset import ModulationDatasetFixedInputSound, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient, \
@@ -1262,9 +1262,9 @@ def create_arg_parser():
                         help='Whether to use a high resolution Short Time Fourier Transform in the preprocessing of the backward model')
 
     # cluster depedant flag
-    parser.add_argument('--use-newton-cluster', action='store_true', default=False,
+    parser.add_argument('--use-newton-cluster', action='store_true', default=True,
                         help="Whether to use Newton cluster")
-    parser.add_argument('--use-floria-cluster', action='store_true', default=True, help="Whether to use Floria cluster")
+    parser.add_argument('--use-floria-cluster', action='store_true', default=False, help="Whether to use Floria cluster")
 
     # train mode
     parser.add_argument('--validate', action='store_true', default=False, help="perform training or validation")
