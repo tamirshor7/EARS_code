@@ -114,8 +114,7 @@ def _apply_modulation(original_sound:torch.Tensor, phase_modulation:torch.Tensor
     
     return modulated_sound
 
-# TO CANCEL:
-#@torch.jit.script
+@torch.jit.script
 def apply_modulation(original_sound:torch.Tensor, phase_modulation:torch.Tensor, omega_per_rotor:float=46.9333688083713, dt:float=1/3003.735603735763, use_radians:bool=True, interpolation_mode:str='bilinear'):
     '''
     Inject phase modulation in sound
