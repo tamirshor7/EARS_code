@@ -1,4 +1,4 @@
-# Active propulsion noise shaping for multi-rotor aircraft localization
+# [Active propulsion noise shaping for multi-rotor aircraft localization](https://arxiv.org/abs/2402.17289)
 
 
 ## Gabriele Serussi*, Tamir Shor*, Tom Hirshberg, Chaim Baskin, Alex Bronstein    <img src="images/vista_logo.png" width="40px" align="right"/>
@@ -48,6 +48,8 @@ fields.
 
 ## Description  
 Harness and shape the propulsion noise of multi-rotor aircraft to improve localization accuracy. We propose a system for self-noise-based localization in a known environment. We show that training it simultaneously with learning time-varying rotor phase modulation achieves accurate and robust localization. The proposed methods are evaluated using a computationally affordable simulation of MAV rotor noise in 2D acoustic environments that is fitted to real recordings of rotor pressure fields.
+
+Paper: [Link](https://arxiv.org/abs/2402.17289)
 
 ## Setup
 
