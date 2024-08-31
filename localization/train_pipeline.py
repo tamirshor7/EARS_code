@@ -12,9 +12,9 @@ import torch
 from matplotlib import pyplot as plt
 
 import sys
-#sys.path.append("/home/tamir.shor/EARS")
-from EARS.localization.phase_modulation.phase_modulation_pipeline import Localization_Model
-from EARS.localization.phase_modulation.modulation_dataset import  \
+
+from EARS_code.localization.phase_modulation.phase_modulation_pipeline import Localization_Model
+from EARS_code.localization.phase_modulation.modulation_dataset import  \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient2d, collate_fn, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient2dOrientation, \
@@ -23,16 +23,16 @@ from torch.utils.data import DataLoader, RandomSampler
 
 import torch
 import os
-from EARS.localization.physics import Physics, SAMPLES_PER_ROTATION, PLOT_DT #get_integrated_velocity
-from EARS.localization.penalty import Penalty #get_integrated_velocity_penalty
+from EARS_code.localization.physics import Physics, SAMPLES_PER_ROTATION, PLOT_DT #get_integrated_velocity
+from EARS_code.localization.penalty import Penalty #get_integrated_velocity_penalty
 #from torchviz import make_dot
 
 from math import sqrt
 import h5py
 
 # Initialize logging
-from EARS.localization.multi_position import master, aggregator, trajectory_factory
-import EARS.localization.multi_position.dataset as multi_position_dataset
+from EARS_code.localization.multi_position import master, aggregator, trajectory_factory
+import EARS_code.localization.multi_position.dataset as multi_position_dataset
 
 #STABILITY_SCALE_TIME_FACTOR = 0.34
 
