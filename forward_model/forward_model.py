@@ -14,9 +14,9 @@ parent_dir = os.path.join(cur_dir,'..','..')
 sys.path.insert(0, parent_dir)
 # import local methods
 # ATTENTION: to run trainer put a dot before every package name!
-from EARS.forward_model.RealRecordings import RealRecordingsSeveralExperiments
-from EARS.forward_model.load_tfevent import TFeventParams
-from EARS.forward_model.jax_scipy_minimize_forward import minimize
+from EARS_code.forward_model.RealRecordings import RealRecordingsSeveralExperiments
+from EARS_code.forward_model.load_tfevent import TFeventParams
+from EARS_code.forward_model.jax_scipy_minimize_forward import minimize
 from pyroomacoustics_differential import room, forward_model_2D_interface, consts
 
 # Not original imports
