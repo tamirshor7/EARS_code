@@ -88,7 +88,7 @@ def create_harmonic_signal_matrix_style_with_coeff(omega, coeffs, phi_0=0, harmo
         phase_modulation_single_rotor = jnp.tile(phase_modulation, (num_sources,1,1))
         no_modulation_single_rotor = jnp.zeros((num_sources, 1, harmonies_omega_t.shape[2]))
         phase_modulation = jnp.zeros_like(harmonies_omega_t)
-        # ATTENTION: this if-else is not in the original code and it is added to support the case when modulate_phase is not a list
+        
         if num_rotors == 1:
             if modulate_phase:
                 phase_modulation = phase_modulation.at[0:num_sources,:,:].set(phase_modulation_single_rotor)
@@ -96,8 +96,8 @@ def create_harmonic_signal_matrix_style_with_coeff(omega, coeffs, phi_0=0, harmo
                 phase_modulation = phase_modulation.at[0:num_sources,:,:].set(no_modulation_single_rotor)
         else:
             for i in range(num_rotors):
-                print(modulate_phase)
-                if modulate_phase[i]:
+                
+                if (modulate_phase[i] if isinstance(modulate_phase,list) else modulate_phase):
                     phase_modulation = phase_modulation.at[i*num_sources:(i+1)*num_sources,:,:].set(phase_modulation_single_rotor)
                 else:
                     phase_modulation = phase_modulation.at[i*num_sources:(i+1)*num_sources,:,:].set(no_modulation_single_rotor)
