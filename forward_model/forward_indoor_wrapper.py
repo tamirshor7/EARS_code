@@ -275,7 +275,7 @@ def define_save_dir(args, delta, number_of_angles):
             save_dir = os.path.join('/mnt', 'walkure_public','tamirs', 'pressure_field_orientation_dataset', 'mega_dataset', f'{args["saved_data_dir_path"]}_{args["room_x"]}_{args["room_y"]}_order_{args["max_order"]}_{round(args["e_absorption"],2)}_d_{delta}', 'rir')
         else:
             #save_dir = os.path.join('/mnt', 'walkure_public','tamirs', 'pressure_field_orientation_dataset', f'{args["saved_data_dir_path"]}_{args["room_x"]}_{args["room_y"]}_order_{args["max_order"]}_{round(args["e_absorption"],2)}_d_{delta}', 'rir')
-            save_dir = os.path.join(args['save_data_dir_path'], 'rir')
+            save_dir = os.path.join(args['saved_data_dir_path'], 'rir')
     return save_dir
 
 def compute_rir_foreach_location_and_angle(args, delta=0.02, delta_angle=onp.pi/8, margins=0.02, cpu_pool=40, by_demand=False,
