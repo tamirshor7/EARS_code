@@ -524,4 +524,4 @@ if __name__ == "__main__":
             margins=args['margins']
             )
     if args['compute_sound_only']:
-        simulate_signals_with_rir(args,delta=args['delta'])
+        simulate_signals_with_rir(args)
