@@ -132,7 +132,7 @@ def add_args(parser, args=None):
     parser.add_argument('-generation_computation', choices=['iterative', 'concurrent'], default='concurrent', type=str, help="Whether to generate data iteratively (set it to iterative) or concurrently (set it to concurrent). Default: concurrent")
 
     parser.add_argument('-drone_orientation', default=0.0, type=float, help='The orientation of the drone in radians')
-
+    parser.add_argument('-save-data-dir-path', default=".", type=str, help = 'Path for saving generated rir and sound')
     args = parser.parse_args(args)
     return vars(args) # vars converts the return object from parser.parse_args() to a dict
 
