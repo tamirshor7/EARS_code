@@ -13,9 +13,13 @@ import torch
 import torchvision
 from matplotlib import pyplot as plt
 import sys
-#sys.path.append("/home/tamir.shor/EARS")
-from EARS_code.localization.phase_modulation.phase_modulation_pipeline import Localization_Model
-from EARS_code.localization.phase_modulation.modulation_dataset import ModulationDatasetFixedInputSound, \
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+from localization.phase_modulation.phase_modulation_pipeline import Localization_Model
+from localization.phase_modulation.modulation_dataset import ModulationDatasetFixedInputSound, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient2d, collate_fn, \
     ModulationDatasetFixedInputSoundFixedAbsorptionCoefficient2dOrientation, \
@@ -26,14 +30,14 @@ from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 import torch
 import os
-from EARS_code.localization.physics import Physics, SAMPLES_PER_ROTATION, PLOT_DT #get_integrated_velocity
-from EARS_code.localization.penalty import Penalty #get_integrated_velocity_penalty
+from localization.physics import Physics, SAMPLES_PER_ROTATION, PLOT_DT #get_integrated_velocity
+from localization.penalty import Penalty #get_integrated_velocity_penalty
 # from torchviz import make_dot
 import h5py
 from math import sqrt
 from datetime import datetime
-from EARS_code.localization.multi_position import master, aggregator, trajectory_factory
-import EARS_code.localization.multi_position.dataset as multi_position_dataset
+from localization.multi_position import master, aggregator, trajectory_factory
+import localization.multi_position.dataset as multi_position_dataset
 
 # Initialize logging
 # logging.basicConfig(level=logging.INFO)
@@ -78,6 +82,7 @@ def get_vel_acc(x, dt):
 def create_data_loaders(args):
     # dataset = AudioLocalizationDataset(args.data_path)
     # dataset = ModulationDatasetFixedInputSound()
+    
     if args.use_2d_given_orientation:
         if args.use_non_convex_room:
             min_coord: torch.Tensor = torch.tensor([0.93, 0.93])
@@ -112,7 +117,7 @@ def create_data_loaders(args):
             else:
                 dataset = multi_position_dataset.MultiPositionDataset(args.data_path, trajectory_fact, duration=args.duration, filter_angles=args.use_mega_dataset, use_newton_cluster=args.use_newton_cluster)
         else:
-            dataset = Localization2dGivenOrientationDataset(args.data_path, duration=args.duration, filter_angles=args.use_mega_dataset, use_newton_cluster=args.use_newton_cluster,
+            dataset = Localization2dGivenOrientationDataset(args.data_path, duration=args.duration,
                                                             min_coord=min_coord, max_coord=max_coord)
         torch.autograd.set_detect_anomaly(True)
     elif args.use_2d:
@@ -157,6 +162,7 @@ def create_data_loaders(args):
                 fnct = collate_fn_orientation
         else:
             fnct = collate_fn
+            
         train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, collate_fn=fnct,
                                     #   pin_memory=True, num_workers=3)
                                       pin_memory=True)
