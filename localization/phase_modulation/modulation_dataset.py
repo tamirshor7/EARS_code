@@ -27,7 +27,7 @@ class ModulationDatasetFixedInputSound(Dataset):
             
         self.absorption_coefficients = np.arange(0.05, 0.8, 0.05)
         self.distances_from_wall = np.arange(1.0, 5.0, step_distance)
-        input_sound_parameters = np.load(os.path.join(os.path.dirname(__file__), "..", "..", "dataset", "input_sound_bank", "input_sound_parameters.npz"))
+        input_sound_parameters = np.load(os.path.join(os.path.dirname(__file__), "input_sound_parameters.npz"))
         if duration is not None:
             self.rec_len = int(duration*input_sound_parameters["fs"])
         else:
@@ -350,6 +350,7 @@ class Localization2dGivenOrientationDataset(Dataset):
                  skip_bad_files:bool=False) -> None:
         assert deformation is not None or not return_deformation, "You need to specify the deformation"
         super().__init__()
+        self.extension = ".npy"
         self.data_path = data_path
         self.skip_bad_files = skip_bad_files
         if not os.path.exists(self.data_path):
@@ -357,10 +358,10 @@ class Localization2dGivenOrientationDataset(Dataset):
         
         self.use_newton_cluster = use_newton_cluster
 
-        self.single_data_path = list(filter(lambda x: x.endswith(".hdf5"), fast_io.get_listed_files(data_path)))
+        self.single_data_path = list(filter(lambda x: x.endswith(".npy"), fast_io.get_listed_files(data_path)))
         
 
-        input_sound_parameters = np.load(os.path.join(os.path.dirname(__file__), "..", "..", "dataset", "input_sound_bank", "input_sound_parameters.npz"))
+        input_sound_parameters = np.load(os.path.join(os.path.dirname(__file__), "input_sound_parameters.npz"))
         if duration is not None:
             self.rec_len = int(duration*input_sound_parameters["fs"])
         else:
