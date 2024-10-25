@@ -238,7 +238,10 @@ class OrientationAggregateTransformerMLP(nn.Module):
         # Aggregation with concatenation
         aggregated = torch.cat((sound, phi, orientation), dim=1)
         aggregated = self.mlp_aggregated(aggregated)
-        aggregated = self.aggregate_transformer(aggregated)
+        if len(aggregated.shape) == 2:
+            aggregated = self.aggregate_transformer(aggregated.unsqueeze(1)).squeeze(1)
+        else:
+            aggregated = self.aggregate_transformer(aggregated)
         output = self.linear(aggregated)
         return output
     
@@ -281,7 +284,11 @@ class OrientationAggregateTransformerAttention(nn.Module):
 
         # Aggregation with concatenation
         aggregated = torch.cat((sound, phi, orientation), dim=1)
-        aggregated = self.aggregate_transformer(aggregated)
+        if len(aggregated.shape) == 2:
+            aggregated = self.aggregate_transformer(aggregated.unsqueeze(1)).squeeze(1)
+        else:
+            aggregated = self.aggregate_transformer(aggregated)
+       
         output = self.linear(aggregated)
         return output
 
